@@ -9,29 +9,29 @@ class Directory extends React.Component {
     this.state = {
       sections: [
         {
-          title: "hats",
-          imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
+          title: "shoes",
+          imageUrl: "https://i.ibb.co/MNZ4qw7/shoes.png",
           id: 1
         },
         {
-          title: "jackets",
-          imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
+          title: "clothing",
+          imageUrl: "https://i.ibb.co/mtr2xRw/0628-jordan-pwh-clothes.png",
           id: 2
         },
         {
-          title: "sneakers",
-          imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
+          title: "gear",
+          imageUrl: "https://i.ibb.co/sjwbmwt/gear.png",
           id: 3
         },
         {
-          title: "womens",
-          imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
+          title: "women",
+          imageUrl: "https://i.ibb.co/pwcsf2z/women.png",
           size: "large",
           id: 4
         },
         {
-          title: "mens",
-          imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
+          title: "kids",
+          imageUrl: "https://i.ibb.co/JCpYGNH/kids.png",
           size: "large",
           id: 5
         }
