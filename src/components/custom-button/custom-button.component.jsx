@@ -2,8 +2,13 @@ import React from "react";
 
 import "./custom-button.styles.scss";
 
-const CustomButton = ({ children, ...otherProps }) => (
-  <button className="custom-button" {...otherProps}>
+/* In React, everything is JavaScript, which gives us a lot of flexibility. */
+/* By using ternary operator, we can add className only when user has signed in. */
+const CustomButton = ({ children, isGoogleSignIn, ...otherProps }) => (
+  <button
+    className={`${isGoogleSignIn ? "google-sign-in" : ""} custom-button`}
+    {...otherProps}
+  >
     {children}
   </button>
 );
