@@ -21,6 +21,7 @@ const Header = ({ currentUser }) => (
       <Link className="option" to="/shop">
         CONTACT
       </Link>
+      {/* conditionally render a sign-out button if the user is signed in, or vice versa.*/}
       {currentUser ? (
         <div className="option" onClick={() => auth.signOut()}>
           Sign Out
