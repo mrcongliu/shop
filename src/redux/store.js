@@ -4,7 +4,6 @@ import { createStore, applyMiddleware } from "redux";
 import logger from "redux-logger";
 
 import rootReducer from "./root-reducer";
-import { createSocket } from "dgram";
 
 /* set up middlewares, they are gonna be in an array, which you can check in redux documentation. */
 const middlewares = [logger];
