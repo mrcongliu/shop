@@ -7,7 +7,6 @@ import CustomButton from "../custom-button/custom-button.component";
 import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
 
 import "./sign-in.styles.scss";
-import { async } from "q";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -33,6 +32,8 @@ class SignIn extends React.Component {
   };
 
   handleChange = event => {
+    /* get the input value from FormInput, and put it into state */
+
     const { name, value } = event.target;
 
     this.setState({ [name]: value });
