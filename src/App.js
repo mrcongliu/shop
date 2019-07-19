@@ -56,8 +56,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {/* Tell header the state of the user, so it can display the signin/signout button */}
-        <Header currentUser={this.state.currentUser} />
+        {/* Tell header the state of the user, so it can display the signin/signout button. */}
+        {/* currentUser={this.state.currentUser} is removed after redux being implemented */}
+        <Header />
 
         <Switch>
           <Route exact path="/" component={HomePage} />

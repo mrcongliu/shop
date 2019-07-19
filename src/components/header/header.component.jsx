@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+/* connect is a High Order Component, which enable component to have access to redux */
+import { connect } from "react-redux";
+
 /* import auth from firebase, to enable users to signout */
 import { auth } from "../../firebase/firebase.utils";
 
@@ -35,4 +38,11 @@ const Header = ({ currentUser }) => (
   </div>
 );
 
-export default Header;
+/* mapStateToProps is a standard name, which can be changed by you. */
+/* state is the root-reducer */
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+});
+
+/* this result will be passed into Header component */
+export default connect(mapStateToProps)(Header);
