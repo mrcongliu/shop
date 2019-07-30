@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 /* connect is a High Order Component, which enable component to have access to redux */
 import { connect } from "react-redux";
 
+/* a new type of selector */
+import { createStructuredSelector } from "reselect";
+
 /* import auth from firebase, to enable users to signout */
 import { auth } from "../../firebase/firebase.utils";
 
@@ -12,6 +15,8 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropDown from "../cart-dropdown/cart-dropdown.component";
+import { selectCartHidden } from "../../redux/cart/cart.selectors";
+import { selectCurrentUser } from "../../redux/user/user.selectors";
 
 import "./header.styles.scss";
 
@@ -43,12 +48,9 @@ const Header = ({ currentUser, hidden }) => (
   </div>
 );
 
-/* mapStateToProps is a standard name, which can be changed by you. */
-/* state is the root-reducer */
-/* destructuring state */
-const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
-  currentUser,
-  hidden
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  hidden: selectCartHidden
 });
 
 /* this result will be passed into Header component */
