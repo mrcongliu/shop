@@ -7,7 +7,11 @@ import logger from "redux-logger";
 import rootReducer from "./root-reducer";
 
 /* set up middlewares, they are gonna be in an array, which you can check in redux documentation. */
-const middlewares = [logger];
+const middlewares = [];
+
+if (process.env.NODE_ENV === "development") {
+  middlewares.push(logger);
+}
 
 /* using spread operator to put all the items inside that array into applyMiddleware function */
 export const store = createStore(rootReducer, applyMiddleware(...middlewares));
