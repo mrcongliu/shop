@@ -11,9 +11,17 @@ import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up
 import CheckoutPage from "./pages/checkout/checkout.component";
 
 import Header from "./components/header/header.component";
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import {
+  auth,
+  createUserProfileDocument,
+  addCollectionAndDocuments
+} from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
+import {
+  selectCollection,
+  selectCollectionsForPreview
+} from "./redux/shop/shop.selectors";
 
 class App extends React.Component {
   // We want to close subscriptions when component is unmount,
@@ -21,7 +29,7 @@ class App extends React.Component {
   unsubscribleFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser } = this.props;
+    const { setCurrentUser, collectionsArray } = this.props;
 
     // the onAuthStateChanged subscription that is always open,
     // as long as the component has been mounted
@@ -44,6 +52,10 @@ class App extends React.Component {
       } else {
         /*set currentUser to null when the return value is null */
         setCurrentUser(userAuth);
+        addCollectionAndDocuments(
+          "collections",
+          collectionsArray.map(({ title, items }) => ({ title, items }))
+        );
       }
     });
   }
@@ -85,7 +97,8 @@ class App extends React.Component {
 /* we are using createStructuredSelect 
 in case we need more states in the future. */
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  collectionsArray: selectCollectionsForPreview
 });
 
 const mapDispatchToProps = dispatch => ({
